@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Phot Selction View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="initVC" id="BYZ-38-t0r" customClass="PhotSelctionViewController" customModule="croppingTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldf-0K-VNH">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="gnT-uN-1Qa"/>
+                                </constraints>
+                                <state key="normal" title="Crop Photo! ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6jh-wG-SAw"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PICK YOUR PHOTO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqX-0i-5Mn">
+                                <rect key="frame" x="112.5" y="323" width="150" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFM-XX-ped">
+                                <rect key="frame" x="0.0" y="579" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4Dh-uf-7rR"/>
+                                </constraints>
+                                <state key="normal" title="View Gallery">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openGallery:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gqy-BR-wqM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="aqX-0i-5Mn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1Cs-Sg-BAz"/>
+                            <constraint firstAttribute="bottom" secondItem="ldf-0K-VNH" secondAttribute="bottom" id="1nh-lk-yU3"/>
+                            <constraint firstAttribute="trailing" secondItem="eFM-XX-ped" secondAttribute="trailing" id="8aV-ny-Swa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ldf-0K-VNH" secondAttribute="bottom" id="9f5-TV-Ed3"/>
+                            <constraint firstItem="ldf-0K-VNH" firstAttribute="top" secondItem="aqX-0i-5Mn" secondAttribute="bottom" constant="279" id="FXN-3D-dwY"/>
+                            <constraint firstItem="eFM-XX-ped" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bAo-fi-BbY"/>
+                            <constraint firstItem="aqX-0i-5Mn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fI1-yF-cqE"/>
+                            <constraint firstItem="ldf-0K-VNH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="k7t-Q0-KX8"/>
+                            <constraint firstItem="ldf-0K-VNH" firstAttribute="top" secondItem="eFM-XX-ped" secondAttribute="bottom" id="kGS-Gc-9v8"/>
+                            <constraint firstAttribute="trailing" secondItem="ldf-0K-VNH" secondAttribute="trailing" id="lRg-Zr-7oL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-132" y="107"/>
+        </scene>
+        <!--Cropping View Controller-->
+        <scene sceneID="JfF-b4-ufa">
+            <objects>
+                <viewController storyboardIdentifier="cropVC" id="RBi-uO-6iC" customClass="CroppingViewController" customModule="croppingTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="I58-ah-6ce"/>
+                        <viewControllerLayoutGuide type="bottom" id="gfw-FM-xdv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zRQ-sx-CT5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcp-hx-0dN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="580"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4fH-6P-atb">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="580"/>
+                                    </imageView>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qPs-hP-5jm">
+                                        <rect key="frame" x="62.5" y="165" width="250" height="250"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="daZ-HR-bdd"/>
+                                            <constraint firstAttribute="height" constant="250" id="hRd-SY-rAJ"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="ylR-Av-DFb" appends="YES" id="tXj-YA-gAN"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4fH-6P-atb" secondAttribute="trailing" id="49A-kV-byf"/>
+                                    <constraint firstItem="4fH-6P-atb" firstAttribute="leading" secondItem="Zcp-hx-0dN" secondAttribute="leading" id="5CG-ZU-rYk"/>
+                                    <constraint firstAttribute="bottom" secondItem="4fH-6P-atb" secondAttribute="bottom" id="D38-zq-1cK"/>
+                                    <constraint firstItem="qPs-hP-5jm" firstAttribute="centerY" secondItem="4fH-6P-atb" secondAttribute="centerY" id="Nfe-4W-ruE"/>
+                                    <constraint firstItem="qPs-hP-5jm" firstAttribute="centerX" secondItem="4fH-6P-atb" secondAttribute="centerX" id="WwD-Yg-LhV"/>
+                                    <constraint firstItem="4fH-6P-atb" firstAttribute="top" secondItem="Zcp-hx-0dN" secondAttribute="top" id="pFD-Rp-rPC"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osY-bd-nX9">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.0008500647668393535" green="0.0008500647668393535" blue="0.0008500647668393535" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="HHj-FM-Ayn"/>
+                                </constraints>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="savePhoto:" destination="RBi-uO-6iC" eventType="touchUpInside" id="PKY-zf-to1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOl-yi-TlT">
+                                <rect key="frame" x="0.0" y="579" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="KLb-fT-7Q1"/>
+                                </constraints>
+                                <state key="normal" title="Change Photo">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changePhoto:" destination="RBi-uO-6iC" eventType="touchUpInside" id="kPA-P4-3Ie"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zcp-hx-0dN" firstAttribute="top" secondItem="zRQ-sx-CT5" secondAttribute="top" id="0E7-59-RW8"/>
+                            <constraint firstAttribute="trailing" secondItem="Zcp-hx-0dN" secondAttribute="trailing" id="1Oo-Jp-c0f"/>
+                            <constraint firstItem="aOl-yi-TlT" firstAttribute="leading" secondItem="zRQ-sx-CT5" secondAttribute="leading" id="8U8-9d-Fd8"/>
+                            <constraint firstItem="osY-bd-nX9" firstAttribute="top" secondItem="aOl-yi-TlT" secondAttribute="bottom" id="BCc-lj-J4i"/>
+                            <constraint firstItem="aOl-yi-TlT" firstAttribute="top" secondItem="Zcp-hx-0dN" secondAttribute="bottom" constant="-1" id="THI-gr-cQx"/>
+                            <constraint firstAttribute="trailing" secondItem="osY-bd-nX9" secondAttribute="trailing" id="XO0-2s-04J"/>
+                            <constraint firstItem="gfw-FM-xdv" firstAttribute="top" secondItem="osY-bd-nX9" secondAttribute="bottom" id="Ynj-IA-Mfd"/>
+                            <constraint firstAttribute="trailing" secondItem="osY-bd-nX9" secondAttribute="trailing" id="bU6-7Q-WAf"/>
+                            <constraint firstAttribute="trailing" secondItem="aOl-yi-TlT" secondAttribute="trailing" id="ecD-j1-sIH"/>
+                            <constraint firstItem="osY-bd-nX9" firstAttribute="leading" secondItem="zRQ-sx-CT5" secondAttribute="leading" id="jfo-er-bOv"/>
+                            <constraint firstItem="Zcp-hx-0dN" firstAttribute="leading" secondItem="zRQ-sx-CT5" secondAttribute="leading" id="l6t-5O-N4p"/>
+                            <constraint firstItem="osY-bd-nX9" firstAttribute="leading" secondItem="zRQ-sx-CT5" secondAttribute="leading" id="lYt-aW-Zhu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="croppingImageView" destination="qPs-hP-5jm" id="Gh5-Om-cad"/>
+                        <outlet property="holdingView" destination="Zcp-hx-0dN" id="JOL-Ah-bvM"/>
+                        <outlet property="mainImageView" destination="4fH-6P-atb" id="0gg-Rt-Xqj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ut-Qn-zYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ylR-Av-DFb">
+                    <connections>
+                        <action selector="handlePanWithRecognizer:" destination="RBi-uO-6iC" id="Jvy-V0-kzQ"/>
+                        <outlet property="delegate" destination="RBi-uO-6iC" id="ZxX-np-gAk"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="738" y="107"/>
+        </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="Vbh-xM-Hbm">
+            <objects>
+                <collectionViewController id="1pf-dp-ozF" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sA8-4F-ces">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HV1-eS-6mP">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZDx-ma-SLv">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="1pf-dp-ozF" id="33q-bW-k5d"/>
+                            <outlet property="delegate" destination="1pf-dp-ozF" id="vrb-zK-0Yl"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oPK-Ck-OYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1473" y="107"/>
+        </scene>
+    </scenes>
+</document>
