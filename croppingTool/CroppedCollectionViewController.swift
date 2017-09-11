@@ -18,7 +18,6 @@ class CroppedCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.sc
         // Do any additional setup after loading the view.
     }
 

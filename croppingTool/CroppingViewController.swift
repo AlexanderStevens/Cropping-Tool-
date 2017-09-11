@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreGraphics
 
 class CroppingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var saveBtn: UIButton!
     var startingPhoto : UIImage?
     private var imagePickerController = UIImagePickerController()
     private var imagesArray = [UIImage]()
@@ -42,19 +44,26 @@ class CroppingViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func savePhoto(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Select a Photo", message: "Choose a source", preferredStyle: .actionSheet)
-        let save = UIAlertAction(title: "Save", style: .default, handler: { (UIAlertAction) in
-            let newImage = self.crop(img: self.mainImageView.image!, to: self.croppingImageView.frame)
-            self.croppingImageView.image = newImage
-            self.saveToGallery(croppedImage: newImage)
-        })
+//        let alert = UIAlertController(title: "Select a Photo", message: "Choose a source", preferredStyle: .actionSheet)
+//        let save = UIAlertAction(title: "Save", style: .default, handler: { (UIAlertAction) in
+        let newscale = scale(from: mainImageView.frame.size.width, to:self.startingPhoto!.size.width)
+        var rect = croppingImageView.frame
+        rect.origin.x *= newscale
+        rect.origin.y *= newscale
+        rect.size.width *=  newscale
+        rect.size.height *=  newscale
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alert.addAction(save)
-        alert.addAction(cancel)
-        
-        self.present(alert, animated: true, completion: nil)
+        let newImage = self.crop(img: self.mainImageView.image!, to: rect)
+        self.croppingImageView.image = newImage
+           // self.saveToGallery(croppedImage: newImage)
+//        })
+//        
+//        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        
+//        alert.addAction(save)
+//        alert.addAction(cancel)
+//        
+//        self.present(alert, animated: true, completion: nil)
 
     }
     @IBAction func changePhoto(_ sender: UIButton) {
@@ -90,7 +99,7 @@ class CroppingViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
-        print("Holding View Wodth: \(holdingView.frame.size.width)")
+       // print("Holding View Wodth: \(holdingView.frame.size.width)")
         let translation = recognizer.translation(in: self.holdingView)
         if let cropview = recognizer.view {
             let newX = cropview.frame.origin.x + translation.x
@@ -101,7 +110,9 @@ class CroppingViewController: UIViewController, UIImagePickerControllerDelegate,
             let newRect = CGRect(x: newX, y: newY, width: cropview.frame.width, height: cropview.frame.height)
             if holdingView.bounds.contains(newRect){
                 cropview.center = CGPoint(x:cropview.center.x + translation.x, y:cropview.center.y + translation.y)
+                savePhoto(self.saveBtn)
             }
+            
         }
         recognizer.setTranslation(CGPoint.zero, in: self.holdingView)
     }
@@ -117,25 +128,32 @@ class CroppingViewController: UIViewController, UIImagePickerControllerDelegate,
         dismiss(animated: true, completion: nil)
     }
     
+    func scale(from: CGFloat, to: CGFloat) -> CGFloat {
+        let scale = to / from
+        return scale
+    }
+    
     func crop(img:UIImage, to: CGRect) -> UIImage {
         
-        var scale = CGFloat((img.cgImage?.width)!) / mainImageView.frame.size.width
-        print("Scale: \(scale)")
-        print("Image scale: \(img.scale)")
+//        print("toRect, x: \(to.origin.x), y:\(to.origin.y), width: \(to.size.width), height: \(to.size.height)")
+//        print(" ")
+//        print("mainImg, width: \(String(describing: img.cgImage?.width)), height: \(String(describing: img.cgImage?.height))")
+//        print("cgImg, width: \(img.size.width), height: \(img.size.height)")
+//        
+//        print("mainImgView, x: \(mainImageView.frame.origin.x), y: \(mainImageView.frame.origin.y), width: \(mainImageView.frame.size.width), height: \(mainImageView.frame.size.height)")
+//        print("Rect, x: \(rect.origin.x), y: \(rect.origin.y), width: \(rect.size.width), height: \(rect.size.height)")
         
-        var rect = to
-        rect.origin.x *= scale
-        rect.origin.y *= scale
-        rect.size.width *= scale
-        rect.size.height *= scale
+        // Manually get CGImageRef from UIImage ignoring imageOrientation...
+        UIGraphicsBeginImageContext(img.size)
+        img.draw(in: CGRect(x: 0.0, y: 0.0, width: img.size.width, height: img.size.height))
+        var imageRef = UIGraphicsGetCurrentContext()!.makeImage()!
+        UIGraphicsEndImageContext()
         
-        print("Rect, x: \(rect.origin.x), y: \(rect.origin.y), width: \(rect.size.width), height: \(rect.size.height)")
-        print("mainImg, width: \(img.cgImage?.width), height: \(img.cgImage?.height)")
-        print("cgImg, width: \(img.size.width), height: \(img.size.height)")
-        print("mainImgView, x: \(mainImageView.frame.origin.x), y: \(mainImageView.frame.origin.y), width: \(mainImageView.frame.size.width), height: \(mainImageView.frame.size.height)")
-        scale = CGFloat(img.cgImage!.width) / mainImageView.frame.size.width
-        let imageRef = img.cgImage!.cropping(to: rect)
-        let image = UIImage(cgImage: imageRef!, scale: img.scale, orientation: img.imageOrientation)
+        // Crop CGImageRef
+        imageRef = imageRef.cropping(to: to)!
+        
+        // Get UIImage from CGImageRef
+        let image = UIImage(cgImage: imageRef , scale: 1.0  , orientation: .up)
         
         return image
         
