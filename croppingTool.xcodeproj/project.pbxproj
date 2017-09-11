@@ -14,6 +14,8 @@
 		DB4702801F646BD900D2FCAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB47027E1F646BD900D2FCAF /* LaunchScreen.storyboard */; };
 		DB4702881F6475C500D2FCAF /* PhotSelctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4702871F6475C500D2FCAF /* PhotSelctionViewController.swift */; };
 		DB4702911F65C11500D2FCAF /* CroppedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4702901F65C11400D2FCAF /* CroppedCollectionViewController.swift */; };
+		DBCA94111F65D2DA0028D531 /* PhotoCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCA940F1F65D2DA0028D531 /* PhotoCellCollectionViewCell.swift */; };
+		DBCA94121F65D2DA0028D531 /* PhotoCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCA94101F65D2DA0028D531 /* PhotoCellCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		DB47028C1F64965000D2FCAF /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		DB47028E1F64965600D2FCAF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		DB4702901F65C11400D2FCAF /* CroppedCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CroppedCollectionViewController.swift; sourceTree = "<group>"; };
+		DBCA940F1F65D2DA0028D531 /* PhotoCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		DBCA94101F65D2DA0028D531 /* PhotoCellCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCellCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				DB4702871F6475C500D2FCAF /* PhotSelctionViewController.swift */,
 				DB4702771F646BD900D2FCAF /* CroppingViewController.swift */,
 				DB4702901F65C11400D2FCAF /* CroppedCollectionViewController.swift */,
+				DBCA940F1F65D2DA0028D531 /* PhotoCellCollectionViewCell.swift */,
+				DBCA94101F65D2DA0028D531 /* PhotoCellCollectionViewCell.xib */,
 				DB4702791F646BD900D2FCAF /* Main.storyboard */,
 				DB47027C1F646BD900D2FCAF /* Assets.xcassets */,
 				DB47027E1F646BD900D2FCAF /* LaunchScreen.storyboard */,
@@ -144,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB4702801F646BD900D2FCAF /* LaunchScreen.storyboard in Resources */,
+				DBCA94121F65D2DA0028D531 /* PhotoCellCollectionViewCell.xib in Resources */,
 				DB47027D1F646BD900D2FCAF /* Assets.xcassets in Resources */,
 				DB47027B1F646BD900D2FCAF /* Main.storyboard in Resources */,
 			);
@@ -160,6 +167,7 @@
 				DB4702781F646BD900D2FCAF /* CroppingViewController.swift in Sources */,
 				DB4702881F6475C500D2FCAF /* PhotSelctionViewController.swift in Sources */,
 				DB4702761F646BD900D2FCAF /* AppDelegate.swift in Sources */,
+				DBCA94111F65D2DA0028D531 /* PhotoCellCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +327,7 @@
 				DB4702861F646BD900D2FCAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

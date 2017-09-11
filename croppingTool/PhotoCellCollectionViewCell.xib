@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="gTV-IL-0wX" customClass="PhotoCellCollectionViewCell" customModule="croppingTool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nGR-Fo-kaH">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="PPb-2k-MM6"/>
+                            <constraint firstAttribute="height" constant="150" id="gdd-hb-nfg"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="nGR-Fo-kaH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Gbx-Ju-9Ot"/>
+                <constraint firstAttribute="trailing" secondItem="nGR-Fo-kaH" secondAttribute="trailing" id="eH4-KN-JRS"/>
+                <constraint firstItem="nGR-Fo-kaH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rEa-XD-xGD"/>
+                <constraint firstAttribute="bottom" secondItem="nGR-Fo-kaH" secondAttribute="bottom" id="wFe-Wc-cbT"/>
+            </constraints>
+            <size key="customSize" width="182" height="147"/>
+            <point key="canvasLocation" x="100" y="102"/>
+        </collectionViewCell>
+    </objects>
+</document>

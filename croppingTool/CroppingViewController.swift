@@ -119,7 +119,7 @@ class CroppingViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func crop(img:UIImage, to: CGRect) -> UIImage {
         
-        let scale = CGFloat((img.cgImage?.width)!) / mainImageView.frame.size.width
+        var scale = CGFloat((img.cgImage?.width)!) / mainImageView.frame.size.width
         print("Scale: \(scale)")
         print("Image scale: \(img.scale)")
         
@@ -133,7 +133,7 @@ class CroppingViewController: UIViewController, UIImagePickerControllerDelegate,
         print("mainImg, width: \(img.cgImage?.width), height: \(img.cgImage?.height)")
         print("cgImg, width: \(img.size.width), height: \(img.size.height)")
         print("mainImgView, x: \(mainImageView.frame.origin.x), y: \(mainImageView.frame.origin.y), width: \(mainImageView.frame.size.width), height: \(mainImageView.frame.size.height)")
-        scale = 
+        scale = CGFloat(img.cgImage!.width) / mainImageView.frame.size.width
         let imageRef = img.cgImage!.cropping(to: rect)
         let image = UIImage(cgImage: imageRef!, scale: img.scale, orientation: img.imageOrientation)
         
