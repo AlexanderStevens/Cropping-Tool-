@@ -11,6 +11,7 @@ import CoreGraphics
 
 class CroppingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var holdingViewAspectRatioContraint: NSLayoutConstraint!
     @IBOutlet weak var saveBtn: UIButton!
     var startingPhoto : UIImage?
     private var imagePickerController = UIImagePickerController()
@@ -32,9 +33,18 @@ class CroppingViewController: UIViewController, UIImagePickerControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         imagePickerController.delegate = self
         mainImageView.image = startingPhoto
+        
+        // Set holding view aspect ratio to match aspect ratio of startingPhoto
+        let ar = startingPhoto!.size.width / startingPhoto!.size.height
+        holdingView.removeConstraint(holdingViewAspectRatioContraint)
+        holdingViewAspectRatioContraint = NSLayoutConstraint(item: holdingView, attribute: .width, relatedBy: .equal, toItem: holdingView, attribute: .height, multiplier: ar, constant: 0.0)
+        holdingView.addConstraint(holdingViewAspectRatioContraint)
+
     }
     
     private func saveToGallery(croppedImage:UIImage) {
@@ -46,8 +56,8 @@ class CroppingViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func savePhoto(_ sender: UIButton) {
 //        let alert = UIAlertController(title: "Select a Photo", message: "Choose a source", preferredStyle: .actionSheet)
 //        let save = UIAlertAction(title: "Save", style: .default, handler: { (UIAlertAction) in
-        let newscale = scale(from: mainImageView.frame.size.width, to:self.startingPhoto!.size.width)
-        var rect = croppingImageView.frame
+        let newscale = self.scale(from: self.mainImageView.frame.size.width, to: self.startingPhoto!.size.width)
+        var rect = self.croppingImageView.frame
         rect.origin.x *= newscale
         rect.origin.y *= newscale
         rect.size.width *=  newscale
@@ -55,7 +65,8 @@ class CroppingViewController: UIViewController, UIImagePickerControllerDelegate,
         
         let newImage = self.crop(img: self.mainImageView.image!, to: rect)
         self.croppingImageView.image = newImage
-           // self.saveToGallery(croppedImage: newImage)
+//            self.saveToGallery(croppedImage: newImage)
+//            
 //        })
 //        
 //        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -156,31 +167,6 @@ class CroppingViewController: UIViewController, UIImagePickerControllerDelegate,
         let image = UIImage(cgImage: imageRef , scale: 1.0  , orientation: .up)
         
         return image
-        
-//        let cgimage = img.cgImage!
-//        print("crop: cgimage width \(cgimage.width) img width \(img.size.width)")
-//        var scale =  CGFloat(cgimage.width) / CGFloat(img.size.width)
-//        print("Scale: \(scale)")
-//        let newWidth = to.width * scale
-//        let newHeight = to.height * scale
-//        let newX = to.maxX * scale
-//        let newY = to.maxY * scale
-//        
-//        let newRect = CGRect(x: newX, y: newY, width: newWidth, height: newHeight)
-//        
-//        let c = cgimage.cropping(to: newRect)!
-//        
-//        print("New image width: \(c.width)")
-//        
-//        //            scale = CGFloat(croppingImageView.frame.size.width) / CGFloat(mainImageView.frame.width)
-//        return UIImage(cgImage: c, scale: scale, orientation: img.imageOrientation)
-//        //
-        //            UIGraphicsBeginImageContextWithOptions(to.size, false, imgScale
-        //            cropped.draw(in: CGRect(x: posX, y: posY, width: to.width, height: to.height))
-        //            let resized = UIGraphicsGetImageFromCurrentImageContext()
-        //            UIGraphicsEndImageContext()
-        //            return resized!
-        
     }
 }
 
